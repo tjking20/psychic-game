@@ -61,8 +61,7 @@ document.onkeyup = function(event){
 	
 	// Computer chooses random letter
 	var cpuAnswer = letters[Math.floor(Math.random() * letters.length)];
-	// if (guesses < 10){
-	// 	// cpuAnswer = keep the same?;
+	
 
 // conditional adds 1 to the user score each time he/she wins
 	if (cpuAnswer == key){
@@ -76,7 +75,7 @@ document.onkeyup = function(event){
 
 	}
 
-	if(guessesLeft == 0	){
+	if(guessesLeft == 0){
 		alert("I'm sorry you do not possess the gift of forsight");
 		losses++;
 		document.querySelector("#losses").innerHTML= "Losses: " + losses;
