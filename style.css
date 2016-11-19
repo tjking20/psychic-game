@@ -1,0 +1,8 @@
+body{
+	background-color: black;
+	background-image: url(crystal-ball.jpg);
+	color: white;
+	border: 1px ridge white;
+	width: 500px;
+	padding-left: 20px;
+}

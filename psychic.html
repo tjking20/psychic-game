@@ -1,0 +1,105 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+ 	<title>Psychic-Game</title>
+ 	<meta charset="utf-8">
+ 	<link rel="stylesheet" type="text/css" href="style.css">
+ </head>
+ <body>
+ 	<header>
+ 		<h1>Let's Play the Psychic Game!</h1>
+	</header>
+
+	<div id= "instructions">
+		<h3>Instructions</h3>
+		<ol>
+			<li>Guess what letter I am thinking of.</li>
+			<li>Tap the key of your choice, you have 10 chances to guess correctly</li>
+			<li>Guess my letter <strong>five</strong> times and win the game!!!</li>
+		</ol>
+	</div>
+	<div id= "choices">
+		<div id="currentguesses">
+			Current Guesses: 
+			<br>
+		</div>
+	</div>
+	<div class="scoreboard">
+		<div id="wins">
+		 Wins: 
+		</div>
+		<div id="losses">
+		Losses:
+		</div>
+		<div id="guessesleft">
+		Guesses Left: 10
+		</div>
+	</div>
+
+<script>
+// 1.cpu choice random number (start by choosing a specific letter then test)
+// 2.player guesses. 
+// 	-display guesses on screen
+// 3. guess counter i=5 --i then alert you lose
+// 4. win counter ++i
+// 5. alert player1 on win]
+
+
+var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var guessesLeft = 10;
+var userScore = 0;
+var losses = 0
+var guesses = []
+
+
+// function for capturing user key stroke
+document.onkeyup = function(event){
+
+	var key = event.key;
+	guesses.push(key);
+	document.querySelector("#currentguesses").innerHTML = "Current Guesses: " + guesses;
+	
+	// Computer chooses random letter
+	var cpuAnswer = letters[Math.floor(Math.random() * letters.length)];
+	// if (guesses < 10){
+	// 	// cpuAnswer = keep the same?;
+
+// conditional adds 1 to the user score each time he/she wins
+	if (cpuAnswer == key){
+		userScore++;
+		guesses = [];
+		document.querySelector("#wins").innerHTML = "Wins: " + userScore;
+
+	} else if(cpuAnswer != key){
+		guessesLeft--;
+		document.querySelector("#guessesleft").innerHTML = "Guesses left: " + guessesLeft;
+
+	}
+
+	if(guessesLeft == 0	){
+		alert("I'm sorry you do not possess the gift of forsight");
+		losses++;
+		document.querySelector("#losses").innerHTML= "Losses: " + losses;
+		guessesLeft = 10;
+		guesses = []
+
+	}
+
+
+	if (userScore == 10){
+		alert("Congratulations <br> You are a psychic, you will now be taken captive for testing.<br> #sorrynotsorry");
+	}
+
+	if (losses == 10){
+		document.write("GAME OVER <br> You are not a psychic, pleas stop trying so we can all be done wiht this.");
+	}
+
+}
+
+
+
+
+</script>
+ 
+ </body>
+ </html>
